@@ -1,9 +1,11 @@
 using AspTraining1.Data;
+using AspTraining1.Entities;
 using AspTraining1.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -36,11 +38,23 @@ namespace AspTraining1
             services.AddScoped<IMathService, MathService>();
             services.Configure<AppSettings>(Configuration);
             services.AddScoped<AppSettings>(di => di.GetRequiredService<IOptionsMonitor<AppSettings>>().CurrentValue);
+
+            services.AddDbContextPool<ShopDbContext>(options =>
+            {
+                options.UseSqlite(Configuration.GetConnectionString("ShopDB"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // DO NOT DO THIS IN PRODUCTION!!!
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<ShopDbContext>();
+                db.Database.EnsureCreated();
+            }
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
