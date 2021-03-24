@@ -43,6 +43,8 @@ namespace AspTraining1
             {
                 options.UseSqlite(Configuration.GetConnectionString("ShopDB"));
             });
+
+            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +70,9 @@ namespace AspTraining1
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
 
             app.UseRouting();
 

@@ -105,8 +105,8 @@ namespace AspTraining1.API
         }
 
         // PUT api/<CustomerController>/5
-        [HttpPut("{id:Guid}")]
-        public async Task<ActionResult<string>> Put(Guid id, [FromBody] CustomerCreateOrUpdateModel model)
+        [HttpPost("{id:Guid}")]
+        public async Task<ActionResult<string>> Post(Guid id, [FromBody] CustomerCreateOrUpdateModel model)
         {
             var data = await DB.Customers
                 .Where(Q => Q.CustomerID == id)
