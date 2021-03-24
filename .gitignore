@@ -364,3 +364,6 @@ FodyWeavers.xsd
 
 # SQLite
 *.db
+
+# next.js build output
+.next
