@@ -1,6 +1,7 @@
 dependencies:
   bootstrap: 5.0.0-beta3
   next: 10.0.9_19437c2f9b137c4ee9c416360487a7aa
+  oidc-client: 1.11.5
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   tslib: 2.1.0
@@ -134,6 +135,13 @@ packages:
     dev: true
     resolution:
       integrity: sha512-EaCxbanVeyxDRTQBkdLb3Bvl/HK7PBK6UJjsSixB0iHKoWxE5uu2Q/DgtpOhPIojN0Zl1whvOd7PoHs2P0s5eA==
+  /acorn/7.4.1:
+    dev: false
+    engines:
+      node: '>=0.4.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
   /anser/1.4.9:
     dev: false
     resolution:
@@ -426,6 +434,11 @@ packages:
     dev: false
     resolution:
       integrity: sha512-4FJkXzKXEDB1snCFZlLP4gpC3JILicCpGbzG9f9G7tGqGCzETQ2hWPrcinA9oU4wtf2biUaEH5065UnMeR33oA==
+  /core-js/3.9.1:
+    dev: false
+    requiresBuild: true
+    resolution:
+      integrity: sha512-gSjRvzkxQc1zjM/5paAmL4idJBFzuJoo+jDjF1tStYFMV2ERfD02HhahhCGXUyHxQRG4yFKVSdO6g62eoRMcDg==
   /core-util-is/1.0.2:
     dev: false
     resolution:
@@ -474,6 +487,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-fz4spIh+znjO2VjL+IdhEpRJ3YN6sMzITSBijk6FK2UvTqruSQW+/cCZTSNsMiZNvUeq0CqurF+dAbyiGOY6Wg==
+  /crypto-js/4.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-bzHZN8Pn+gS7DQA6n+iUmBfl0hO5DJq++QP3U6uTucDtk/0iGpXd/Gg7CGR0p8tJhofJyaKoWBuJI4eAO00BBg==
   /css.escape/1.5.1:
     dev: false
     resolution:
@@ -1009,6 +1026,16 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
+  /oidc-client/1.11.5:
+    dependencies:
+      acorn: 7.4.1
+      base64-js: 1.5.1
+      core-js: 3.9.1
+      crypto-js: 4.0.0
+      serialize-javascript: 4.0.0
+    dev: false
+    resolution:
+      integrity: sha512-LcKrKC8Av0m/KD/4EFmo9Sg8fSQ+WFJWBrmtWd+tZkNn3WT/sQG3REmPANE9tzzhbjW6VkTNy4xhAXCfPApAOg==
   /os-browserify/0.3.0:
     dev: false
     resolution:
@@ -1312,6 +1339,12 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
+  /serialize-javascript/4.0.0:
+    dependencies:
+      randombytes: 2.1.0
+    dev: false
+    resolution:
+      integrity: sha512-GaNA54380uFefWghODBWEGisLZFj00nS5ACs6yHa9nLqlLpVLO8ChDGeKRjZnV4Nh4n0Qi7nhYZD/9fCPzEqkw==
   /setimmediate/1.0.5:
     dev: false
     resolution:
@@ -1624,6 +1657,7 @@ specifiers:
   '@types/react': ^17.0.3
   bootstrap: 5.0.0-beta3
   next: ^10.0.9
+  oidc-client: ^1.11.5
   react: ^17.0.2
   react-dom: ^17.0.2
   tslib: ^2.1.0
