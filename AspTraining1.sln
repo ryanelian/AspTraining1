@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspTraining1", "AspTraining1\AspTraining1.csproj", "{6409B16D-1F09-4D1A-A897-5A0768A3E097}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspTraining1.Entities", "AspTraining1.Entities\AspTraining1.Entities.csproj", "{9D5352A6-F09A-4F7B-9988-AF73A88AD7AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspTraining1.Entities", "AspTraining1.Entities\AspTraining1.Entities.csproj", "{9D5352A6-F09A-4F7B-9988-AF73A88AD7AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

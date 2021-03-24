@@ -13,5 +13,7 @@ namespace AspTraining1.Entities
         public Customer Customer { set; get; }
 
         public Product Product { set; get; }
+
+        public int Qty { set; get; }
     }
 }

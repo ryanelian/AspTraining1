@@ -19,6 +19,7 @@ namespace AspTraining1.API
 
         public IMathService MathSvc { get; }
 
+        [HttpGet]
         public int Get()
         {
             return MathSvc.Add(1, 2);

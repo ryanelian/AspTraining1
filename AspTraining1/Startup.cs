@@ -36,6 +36,7 @@ namespace AspTraining1
             services.AddSingleton<WeatherForecastService>();
 
             services.AddScoped<IMathService, MathService>();
+
             services.Configure<AppSettings>(Configuration);
             services.AddScoped<AppSettings>(di => di.GetRequiredService<IOptionsMonitor<AppSettings>>().CurrentValue);
 
@@ -45,6 +46,7 @@ namespace AspTraining1
             });
 
             services.AddSwaggerDocument();
+            services.AddScoped<CartService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
