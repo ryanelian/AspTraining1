@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspTraining1", "AspTraining
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspTraining1.Entities", "AspTraining1.Entities\AspTraining1.Entities.csproj", "{9D5352A6-F09A-4F7B-9988-AF73A88AD7AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{AAA374E9-964A-4C7D-BB28-DB89F64D0195}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9D5352A6-F09A-4F7B-9988-AF73A88AD7AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D5352A6-F09A-4F7B-9988-AF73A88AD7AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D5352A6-F09A-4F7B-9988-AF73A88AD7AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAA374E9-964A-4C7D-BB28-DB89F64D0195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA374E9-964A-4C7D-BB28-DB89F64D0195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA374E9-964A-4C7D-BB28-DB89F64D0195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA374E9-964A-4C7D-BB28-DB89F64D0195}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

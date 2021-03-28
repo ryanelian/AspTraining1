@@ -47,6 +47,22 @@ namespace AspTraining1
 
             services.AddSwaggerDocument();
             services.AddScoped<CartService>();
+
+            services.AddAuthentication().AddJwtBearer("customer-api", options =>
+            {
+                options.Authority = "https://sso.accelist.com/auth/realms/Dev";
+                options.Audience = "customer-api";
+            });
+
+            services.AddCors(option =>
+            {
+                option.AddPolicy("BelajarNextJS", policy =>
+                {
+                    policy.WithOrigins("http://localhost:3000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +90,11 @@ namespace AspTraining1
             app.UseSwaggerUi3();
 
             app.UseRouting();
+
+            app.UseCors("BelajarNextJS");
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

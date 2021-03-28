@@ -1,12 +1,20 @@
 dependencies:
-  bootstrap: 5.0.0-beta3
+  '@fortawesome/fontawesome-svg-core': 1.2.35
+  '@fortawesome/free-solid-svg-icons': 5.15.3
+  '@fortawesome/react-fontawesome': 0.1.14_ec0af2bc0907a851e3e0afc4708fd0f0
+  '@popperjs/core': 2.9.1
+  axios: 0.21.1
+  bootstrap: 5.0.0-beta3_@popperjs+core@2.9.1
+  luxon: 1.26.0
   next: 10.0.9_19437c2f9b137c4ee9c416360487a7aa
   oidc-client: 1.11.5
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
+  sweetalert2: 10.15.7
   tslib: 2.1.0
+  validate.js: 0.13.1
 devDependencies:
-  '@types/node': 14.14.35
+  '@types/node': 14.14.37
   '@types/react': 17.0.3
   typescript: 4.2.3
 lockfileVersion: 5.2
@@ -43,6 +51,42 @@ packages:
     dev: false
     resolution:
       integrity: sha512-jBD+G8+LWpMBBWvVcdr4QysjUE4mU/syrhN17o1u3gx0/WzJB1kwiVZAXRtWbsIPOwW8pF/YJV5+nmetPzepXg==
+  /@fortawesome/fontawesome-common-types/0.2.35:
+    dev: false
+    engines:
+      node: '>=6'
+    requiresBuild: true
+    resolution:
+      integrity: sha512-IHUfxSEDS9dDGqYwIW7wTN6tn/O8E0n5PcAHz9cAaBoZw6UpG20IG/YM3NNLaGPwPqgjBAFjIURzqoQs3rrtuw==
+  /@fortawesome/fontawesome-svg-core/1.2.35:
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 0.2.35
+    dev: false
+    engines:
+      node: '>=6'
+    requiresBuild: true
+    resolution:
+      integrity: sha512-uLEXifXIL7hnh2sNZQrIJWNol7cTVIzwI+4qcBIq9QWaZqUblm0IDrtSqbNg+3SQf8SMGHkiSigD++rHmCHjBg==
+  /@fortawesome/free-solid-svg-icons/5.15.3:
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 0.2.35
+    dev: false
+    engines:
+      node: '>=6'
+    requiresBuild: true
+    resolution:
+      integrity: sha512-XPeeu1IlGYqz4VWGRAT5ukNMd4VHUEEJ7ysZ7pSSgaEtNvSo+FLurybGJVmiqkQdK50OkSja2bfZXOeyMGRD8Q==
+  /@fortawesome/react-fontawesome/0.1.14_ec0af2bc0907a851e3e0afc4708fd0f0:
+    dependencies:
+      '@fortawesome/fontawesome-svg-core': 1.2.35
+      prop-types: 15.7.2
+      react: 17.0.2
+    dev: false
+    peerDependencies:
+      '@fortawesome/fontawesome-svg-core': ^1.2.32
+      react: '>=16.x'
+    resolution:
+      integrity: sha512-4wqNb0gRLVaBm/h+lGe8UfPPivcbuJ6ecI4hIgW0LjI7kzpYB9FkN0L9apbVzg+lsBdcTf0AlBtODjcSX5mmKA==
   /@hapi/accept/5.0.1:
     dependencies:
       '@hapi/boom': 9.1.2
@@ -115,10 +159,14 @@ packages:
       node: '>=8.0.0'
     resolution:
       integrity: sha512-sDOAZcYwynHFTbLo6n8kIbLiVF3a3BLkrmehJUyEbT9F+Smbi47kLGS2gG2g0fjBLR/Lr1InPD7kXL7FaTqEkw==
-  /@types/node/14.14.35:
+  /@popperjs/core/2.9.1:
+    dev: false
+    resolution:
+      integrity: sha512-DvJbbn3dUgMxDnJLH+RZQPnXak1h4ZVYQ7CWiFWjQwBFkVajT4rfw2PdpHLTSTwxrYfnoEXkuBiwkDm6tPMQeA==
+  /@types/node/14.14.37:
     dev: true
     resolution:
-      integrity: sha512-Lt+wj8NVPx0zUmUwumiVXapmaLUcAk3yPuHCFVXras9k5VT9TdhJqKqGVUQCD60OTMCl0qxJ57OiTL0Mic3Iag==
+      integrity: sha512-XYmBiy+ohOR4Lh5jE379fV2IU+6Jn4g5qASinhitfyO71b/sCo6MKsMLF5tc7Zf2CE8hViVQyYSobJNke8OvUw==
   /@types/prop-types/15.7.3:
     dev: true
     resolution:
@@ -199,6 +247,12 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-uWMHxJxtfj/1oZClOxDEV1sQ1HCDkA4MG8Gr69KKeBjEVH0R84WlejZ0y2DcwyBlpAEMltmVYkVgqfLFb2oyiA==
+  /axios/0.21.1:
+    dependencies:
+      follow-redirects: 1.13.3
+    dev: false
+    resolution:
+      integrity: sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   /babel-plugin-syntax-jsx/6.18.0:
     dev: false
     resolution:
@@ -225,7 +279,9 @@ packages:
     dev: false
     resolution:
       integrity: sha512-D7iWRBvnZE8ecXiLj/9wbxH7Tk79fAh8IHaTNq1RWRixsS02W+5qS+iE9yq6RYl0asXx5tw0bLhmT5pIfbSquw==
-  /bootstrap/5.0.0-beta3:
+  /bootstrap/5.0.0-beta3_@popperjs+core@2.9.1:
+    dependencies:
+      '@popperjs/core': 2.9.1
     dev: false
     peerDependencies:
       '@popperjs/core': ^2.9.1
@@ -302,7 +358,7 @@ packages:
     dependencies:
       caniuse-lite: 1.0.30001204
       colorette: 1.2.2
-      electron-to-chromium: 1.3.698
+      electron-to-chromium: 1.3.701
       escalade: 3.1.1
       node-releases: 1.1.71
     dev: false
@@ -553,10 +609,10 @@ packages:
       npm: '>=1.2'
     resolution:
       integrity: sha512-jnjyiM6eRyZl2H+W8Q/zLMA481hzi0eszAaBUzIVnmYVDBbnLxVNnfu1HgEBvCbL+71FrxMl3E6lpKH7Ge3OXA==
-  /electron-to-chromium/1.3.698:
+  /electron-to-chromium/1.3.701:
     dev: false
     resolution:
-      integrity: sha512-VEXDzYblnlT+g8Q3gedwzgKOso1evkeJzV8lih7lV8mL8eAnGVnKyC3KsFT6S+R5PQO4ffdr1PI16/ElibY/kQ==
+      integrity: sha512-Zd9ofdIMYHYhG1gvnejQDvC/kqSeXQvtXF0yRURGxgwGqDZm9F9Fm3dYFnm5gyuA7xpXfBlzVLN1sz0FjxpKfw==
   /elliptic/6.5.4:
     dependencies:
       bn.js: 4.12.0
@@ -639,6 +695,17 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-PpOwAdQ/YlXQ2vj8a3h8IipDuYRi3wceVQQGYWxNINccq40Anw7BlsEXCMbt1Zt+OLA6Fq9suIpIWD0OsnISlw==
+  /follow-redirects/1.13.3:
+    dev: false
+    engines:
+      node: '>=4.0'
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    resolution:
+      integrity: sha512-DUgl6+HDzB0iEptNQEXLx/KhTmDb8tZUHSeLqpnjpknR70H0nC2t9N73BK6fN4hOvJ84pKlIQVQ4k5FFlBedKA==
   /fsevents/2.3.2:
     dev: false
     engines:
@@ -852,6 +919,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
+  /luxon/1.26.0:
+    dev: false
+    resolution:
+      integrity: sha512-+V5QIQ5f6CDXQpWNICELwjwuHdqeJM1UenlZWx5ujcRMc9venvluCjFb4t5NYLhb6IhkbMVOxzVuOqkgMxee2A==
   /make-dir/3.1.0:
     dependencies:
       semver: 6.3.0
@@ -1505,6 +1576,10 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
+  /sweetalert2/10.15.7:
+    dev: false
+    resolution:
+      integrity: sha512-imY0MR03NGefPcGzSYjWYz1GMIlniusEBXilswvKrHD/GMiTxA5jnsdjtK2IoRyXfEaqV7GWt6DM4YVjAZU8gw==
   /timers-browserify/2.0.12:
     dependencies:
       setimmediate: 1.0.5
@@ -1615,6 +1690,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-HShAsny+zS2TZfaXxD9tYj4HQGlBezXZMZuM/S5PKLLoZkShZiGk9o5CzukI1LVHZvjdvZ2Sj1aW/Ndn2NB/HQ==
+  /validate.js/0.13.1:
+    dev: false
+    resolution:
+      integrity: sha512-PnFM3xiZ+kYmLyTiMgTYmU7ZHkjBZz2/+F0DaALc/uUtVzdCt1wAosvYJ5hFQi/hz8O4zb52FQhHZRC+uVkJ+g==
   /vm-browserify/1.1.2:
     dev: false
     resolution:
@@ -1653,12 +1732,20 @@ packages:
     resolution:
       integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 specifiers:
-  '@types/node': ^14.14.35
+  '@fortawesome/fontawesome-svg-core': ^1.2.35
+  '@fortawesome/free-solid-svg-icons': ^5.15.3
+  '@fortawesome/react-fontawesome': ^0.1.14
+  '@popperjs/core': ^2.9.1
+  '@types/node': ^14.14.37
   '@types/react': ^17.0.3
+  axios: ^0.21.1
   bootstrap: 5.0.0-beta3
+  luxon: ^1.26.0
   next: ^10.0.9
   oidc-client: ^1.11.5
   react: ^17.0.2
   react-dom: ^17.0.2
+  sweetalert2: ^10.15.7
   tslib: ^2.1.0
   typescript: ^4.2.3
+  validate.js: ^0.13.1
