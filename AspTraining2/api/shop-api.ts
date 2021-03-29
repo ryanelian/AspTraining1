@@ -211,7 +211,7 @@ export class CustomerClient {
         return Promise.resolve<CustomerListItem[]>(<any>null);
     }
 
-    post(model: CustomerCreateOrUpdateModel): Promise<string> {
+    create(model: CustomerCreateOrUpdateModel): Promise<string> {
         let url_ = this.baseUrl + "/api/Customer";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -227,11 +227,11 @@ export class CustomerClient {
         };
 
         return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processPost(_response);
+            return this.processCreate(_response);
         });
     }
 
-    protected processPost(response: Response): Promise<string> {
+    protected processCreate(response: Response): Promise<string> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
@@ -284,7 +284,7 @@ export class CustomerClient {
         return Promise.resolve<CustomerListItem>(<any>null);
     }
 
-    post2(id: string, model: CustomerCreateOrUpdateModel): Promise<string> {
+    edit(id: string, model: CustomerCreateOrUpdateModel): Promise<string> {
         let url_ = this.baseUrl + "/api/Customer/{id}";
         if (id === undefined || id === null)
             throw new Error("The parameter 'id' must be defined.");
@@ -303,11 +303,11 @@ export class CustomerClient {
         };
 
         return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processPost2(_response);
+            return this.processEdit(_response);
         });
     }
 
-    protected processPost2(response: Response): Promise<string> {
+    protected processEdit(response: Response): Promise<string> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {

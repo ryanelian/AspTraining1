@@ -112,24 +112,21 @@ export class CustomerCreateEditForm extends React.Component<{
             formState: formState
         });
 
-        try {
-            // if no error...
-            if (!validationResults) {
-                await this.props.onValidSubmit(this.props.values);
-                this.setState({
-                    formState: {
-                        name: {
-                            error: '',
-                            dirty: false
-                        },
-                        email: {
-                            error: '',
-                            dirty: false
-                        },
+        // if no error...
+        if (!validationResults) {
+            await this.props.onValidSubmit(this.props.values);
+            this.setState({
+                formState: {
+                    name: {
+                        error: '',
+                        dirty: false
                     },
-                });
-            }
-        } catch (err) {
+                    email: {
+                        error: '',
+                        dirty: false
+                    },
+                },
+            });
         }
 
         this.setState({

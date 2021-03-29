@@ -16,7 +16,7 @@ const CreateCustomer: React.FunctionComponent = () => {
     const onSubmit = async (data: CustomerFormValues) => {
         try {
             const client = new CustomerClient('http://localhost:58778');
-            await client.post({
+            await client.create({
                 name: data.name,
                 email: data.email
             });

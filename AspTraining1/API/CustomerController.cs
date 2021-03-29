@@ -86,7 +86,7 @@ namespace AspTraining1.API
 
         // POST api/<CustomerController>
         [HttpPost]
-        public async Task<ActionResult<string>> Post([FromBody] CustomerCreateOrUpdateModel model)
+        public async Task<ActionResult<string>> Create([FromBody] CustomerCreateOrUpdateModel model)
         {
             if (ModelState.IsValid == false)
             {
@@ -108,7 +108,7 @@ namespace AspTraining1.API
 
         // PUT api/<CustomerController>/5
         [HttpPost("{id:Guid}")]
-        public async Task<ActionResult<string>> Post(Guid id, [FromBody] CustomerCreateOrUpdateModel model)
+        public async Task<ActionResult<string>> Edit(Guid id, [FromBody] CustomerCreateOrUpdateModel model)
         {
             var data = await DB.Customers
                 .Where(Q => Q.CustomerID == id)
