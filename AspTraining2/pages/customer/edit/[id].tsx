@@ -19,7 +19,7 @@ const Edit: React.FunctionComponent<EditProps> = (props) => {
         email: ''
     });
 
-    const [loaded, setLoaded] = useState(false);
+    const [ready, setReady] = useState(false);
     const [notFound, setNotFound] = useState(false);
 
     const tarikData = async () => {
@@ -33,15 +33,14 @@ const Edit: React.FunctionComponent<EditProps> = (props) => {
         } catch (err) {
             setNotFound(true);
         }
-        setLoaded(true);
+
+        setReady(true);
     };
 
-    // kalau suka class, pake ComponentDidLoad function
+    // [] di second parameter artinya fire one time
     useEffect(() => {
-        if (loaded === false) {
-            tarikData();
-        }
-    });
+        tarikData();
+    }, []);
 
     const onSubmit = async (submit: CustomerFormValues) => {
         try {
@@ -67,8 +66,8 @@ const Edit: React.FunctionComponent<EditProps> = (props) => {
         }
     };
 
-    if (!loaded){
-        return <div>Loading...</div>;
+    if (!ready) {
+        return <div>Loading...</div>
     }
 
     if (notFound) {
@@ -96,6 +95,10 @@ const Edit: React.FunctionComponent<EditProps> = (props) => {
 }
 
 const EditPage: React.FunctionComponent<EditProps> = (props) => {
+    if (!props.id) {
+        return <ErrorPage statusCode={404}></ErrorPage>
+    }
+
     return (
         <Layout title="Edit Customer">
             <Edit id={props.id}></Edit>
@@ -117,5 +120,9 @@ export const getServerSideProps: GetServerSideProps<EditProps> = async (context)
         }
     }
 
-    throw new Error('Invalid route parameter "id".');
+    return {
+        props: {
+            id: ''
+        }
+    };
 }
