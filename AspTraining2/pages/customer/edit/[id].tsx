@@ -13,7 +13,7 @@ interface EditProps {
     id: string;
 }
 
-const Edit: React.FunctionComponent<EditProps> = (props) => {
+const Edit: React.FunctionComponent<EditProps> = ({ id }) => {
     const [values, setValues] = useState<CustomerFormValues>({
         name: '',
         email: ''
@@ -25,7 +25,7 @@ const Edit: React.FunctionComponent<EditProps> = (props) => {
     const tarikData = async () => {
         try {
             const client = new CustomerClient('http://localhost:58778');
-            const data = await client.get(props.id);
+            const data = await client.get(id);
             setValues({
                 name: data.name ?? '',
                 email: data.email ?? ''
@@ -37,15 +37,15 @@ const Edit: React.FunctionComponent<EditProps> = (props) => {
         setReady(true);
     };
 
-    // [] di second parameter artinya fire one time
+    // jalanin fungsi tarik data ketika props.id berubah (1x di awal saja)
     useEffect(() => {
         tarikData();
-    }, []);
+    }, [id]);
 
     const onSubmit = async (submit: CustomerFormValues) => {
         try {
             const client = new CustomerClient('http://localhost:58778');
-            await client.edit(props.id, {
+            await client.edit(id, {
                 name: submit.name,
                 email: submit.email
             });
@@ -94,14 +94,14 @@ const Edit: React.FunctionComponent<EditProps> = (props) => {
     );
 }
 
-const EditPage: React.FunctionComponent<EditProps> = (props) => {
-    if (!props.id) {
+const EditPage: React.FunctionComponent<EditProps> = ({ id }) => {
+    if (!id) {
         return <ErrorPage statusCode={404}></ErrorPage>
     }
 
     return (
         <Layout title="Edit Customer">
-            <Edit id={props.id}></Edit>
+            <Edit id={id}></Edit>
         </Layout>
     );
 }
