@@ -1,4 +1,4 @@
-import { Layout } from "../shared/Layout";
+import { Authorize, Layout } from "../shared/Layout";
 import React from "react";
 import { CustomerListItem } from "../../api/shop-api";
 import Link from "next/link";
@@ -106,10 +106,10 @@ class Customer extends React.Component<{}, {
         }
 
         const client = CustomerClientWithAuth(user);
-            const data = await client.getAll();
-            this.setState({
-                customers: data
-            });
+        const data = await client.getAll();
+        this.setState({
+            customers: data
+        });
     }
 
     render() {
@@ -145,8 +145,10 @@ class Customer extends React.Component<{}, {
 
 export default function CustomerPage() {
     return (
-        <Layout title="Customer">
-            <Customer></Customer>
-        </Layout>
+        <Authorize>
+            <Layout title="Customer">
+                <Customer></Customer>
+            </Layout>
+        </Authorize>
     );
 }

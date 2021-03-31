@@ -149,3 +149,30 @@ export class Layout extends React.Component<{
         );
     }
 }
+
+const Authorize: React.FunctionComponent<{}> = (props) => {
+    const router = useRouter();
+
+    const [authorized, setAuthorized] = useState(false);
+
+    useEffect(() => {
+        (async () => {
+            const userManager = UserManagerFactory();
+            const user = await userManager.getUser();
+
+            if (!user) {
+                router.push('/account/login');
+            } else {
+                setAuthorized(true);
+            }
+        })();
+    }, []);
+
+    if (!authorized) {
+        return <div></div>;
+    }
+
+    return <div>{props.children}</div>
+}
+
+export { Authorize };
