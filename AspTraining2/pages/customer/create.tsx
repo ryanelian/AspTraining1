@@ -1,10 +1,11 @@
-import { faArrowLeft, faChevronUp, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { CustomerClient } from "../../api/shop-api";
 import { CustomerCreateEditForm, CustomerFormValues } from "../../forms/CustomerCreateEditForm";
+import { CustomerClientWithAuth } from "../../services/NSwagWithAuthFactory";
+import { UserManagerFactory } from "../../services/UserManagerFactory";
 import { Layout } from "../shared/Layout";
 
 const CreateCustomer: React.FunctionComponent = () => {
@@ -15,7 +16,13 @@ const CreateCustomer: React.FunctionComponent = () => {
 
     const onSubmit = async (data: CustomerFormValues) => {
         try {
-            const client = new CustomerClient('http://localhost:58778');
+            const userManager = UserManagerFactory();
+            const user = await userManager.getUser();
+            if (!user) {
+                throw new Error('Unauthorized!');
+            }
+
+            const client = CustomerClientWithAuth(user);
             await client.create({
                 name: data.name,
                 email: data.email
@@ -26,7 +33,6 @@ const CreateCustomer: React.FunctionComponent = () => {
                 text: 'Created new customer: ' + data.name,
                 icon: 'success'
             });
-
         } catch (error) {
             // console.error(error);
             Swal.fire({

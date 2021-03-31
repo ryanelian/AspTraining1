@@ -1,10 +1,12 @@
 import { Layout } from "../shared/Layout";
 import React from "react";
-import { CustomerClient, CustomerListItem } from "../../api/shop-api";
+import { CustomerListItem } from "../../api/shop-api";
 import Link from "next/link";
 import Swal, { SweetAlertResult } from "sweetalert2";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { CustomerClientWithAuth } from "../../services/NSwagWithAuthFactory";
+import { UserManagerFactory } from "../../services/UserManagerFactory";
 
 const DeleteCustomerButton: React.FunctionComponent<{
     customerID: string,
@@ -26,7 +28,14 @@ const DeleteCustomerButton: React.FunctionComponent<{
             return;
         }
 
-        const client = new CustomerClient('http://localhost:58778');
+        const userManager = UserManagerFactory();
+        const user = await userManager.getUser();
+
+        if (!user) {
+            return;
+        }
+
+        const client = CustomerClientWithAuth(user);
         await client.delete(props.customerID);
 
         Swal.fire({
@@ -61,7 +70,7 @@ const CustomerListItemRows: React.FunctionComponent<{
             <td>{Q.name}</td>
             <td>{Q.email}</td>
             <td>
-                <Link href={'/customer/edit/'+ Q.customerID}>
+                <Link href={'/customer/edit/' + Q.customerID}>
                     <a className="btn btn-warning btn-sm me-1">
                         <FontAwesomeIcon icon={faEdit}></FontAwesomeIcon>
                     </a>
@@ -89,11 +98,18 @@ class Customer extends React.Component<{}, {
     }
 
     reloadCustomerData = async () => {
-        const client = new CustomerClient('http://localhost:58778');
-        const data = await client.getAll();
-        this.setState({
-            customers: data
-        });
+        const userManager = UserManagerFactory();
+        const user = await userManager.getUser();
+
+        if (!user) {
+            return;
+        }
+
+        const client = CustomerClientWithAuth(user);
+            const data = await client.getAll();
+            this.setState({
+                customers: data
+            });
     }
 
     render() {

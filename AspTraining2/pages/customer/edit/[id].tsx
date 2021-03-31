@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { GetServerSideProps } from 'next';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
-import { CustomerClient } from '../../../api/shop-api';
 import { CustomerCreateEditForm, CustomerFormValues } from '../../../forms/CustomerCreateEditForm';
 import { Layout } from '../../shared/Layout';
 import ErrorPage from 'next/error';
 import Swal from 'sweetalert2';
+import { UserManagerFactory } from '../../../services/UserManagerFactory';
+import { CustomerClientWithAuth } from '../../../services/NSwagWithAuthFactory';
 
 interface EditProps {
     id: string;
@@ -24,7 +25,14 @@ const Edit: React.FunctionComponent<EditProps> = ({ id }) => {
 
     const tarikData = async () => {
         try {
-            const client = new CustomerClient('http://localhost:58778');
+            const userManager = UserManagerFactory();
+            const user = await userManager.getUser();
+    
+            if (!user) {
+                return;
+            }
+    
+            const client = CustomerClientWithAuth(user);
             const data = await client.get(id);
             setValues({
                 name: data.name ?? '',
@@ -44,7 +52,14 @@ const Edit: React.FunctionComponent<EditProps> = ({ id }) => {
 
     const onSubmit = async (submit: CustomerFormValues) => {
         try {
-            const client = new CustomerClient('http://localhost:58778');
+            const userManager = UserManagerFactory();
+            const user = await userManager.getUser();
+    
+            if (!user) {
+                return;
+            }
+    
+            const client = CustomerClientWithAuth(user);
             await client.edit(id, {
                 name: submit.name,
                 email: submit.email
